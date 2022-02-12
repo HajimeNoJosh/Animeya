@@ -27,7 +27,8 @@ export const Homepage = ({ setRoomId, setRoom, setMyToken, setAnime, myId }) => 
           setRoomId(r.data.id);
           setRoom(r.data);
           axios.get(`http://localhost:3000/room/join/${r.data.token}`).then((animeR) => {
-            setAnime(animeR.data.raw.results);
+            console.log(animeR)
+            setAnime(animeR.data.data);
             history.push(`/room/${r.data.token}`);
           });
         });

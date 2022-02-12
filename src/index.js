@@ -12,7 +12,6 @@ import { RoomVisitor } from './Components/RoomVisitor/RoomVisitor';
 import actionCable from 'actioncable'
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable') // change to whatever port your server uses
-console.log('hi');
 
 const App = () => {
 

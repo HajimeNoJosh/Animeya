@@ -9,25 +9,13 @@ export const Room = ({
   setNum,
   room_id,
   user_token,
-  room,
   setMatchedAId,
   cable
 }) => {
   const { token } = useParams();
-  const [image, setImage] = useState('');
-  const [detailedAnime, setDetailedAnime] = useState({});
   const history = useHistory();
 
   useEffect(() => {
-    if (!isEmpty(anime)) { 
-      axios
-        .get(`https://api.jikan.moe/v3/anime/${anime[num].mal_id}`)
-        .then((res) => {
-          let newImageUrl = res.data.image_url.slice(0, -4) + 'l.jpg' 
-          setImage(newImageUrl)
-          setDetailedAnime(res.data)
-        })
-    }
     cable.subscriptions.create({
       channel: 'RoomsChannel',
       room_id: room_id, },
@@ -51,25 +39,25 @@ export const Room = ({
     axios
       .post(`http://localhost:3000/right_swipe`, { room_id, user_token, anime_id })
     setNum(num+1)
-    console.log(detailedAnime)
+    console.log(anime[num])
   }
 
   const disliked = () => {
     setNum(num+1)
   }
 
-  return !isEmpty(detailedAnime) ? (
+  return anime[num] ? (
     <div>
       Invite your friends: http://localhost:3001/#/join/{token}
         <ul className="travelcompany-input" key={num}>
-        {detailedAnime.title_english ? <li className="input-label">{detailedAnime.title_english}</li>
-         : <li className="input-label">{detailedAnime.title}</li>}
-        <li className="input-label">{detailedAnime.synopsis}</li>
-        {detailedAnime.airing ? <li className="input-label">True</li> 
+        {anime[num].title_english ? <li className="input-label">{anime[num].title_english}</li>
+         : <li className="input-label">{anime[num].title}</li>}
+        <li className="input-label">{anime[num].synopsis}</li>
+        {anime[num].airing ? <li className="input-label">True</li> 
         : <li className="input-label">False</li>}
-        <li className="input-label">{detailedAnime.episodes}</li>
-        <li className="input-label">{detailedAnime.score}</li>
-        <img src={image} alt="Girl in a jacket" width="500" height="600"></img>
+        <li className="input-label">{anime[num].episodes}</li>
+        <li className="input-label">{anime[num].score}</li>
+        <img src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english} width="500" height="600"></img>
         </ul>
       <button onClick={liked}>Like</button>
       <button onClick={disliked}>Dislike</button>
