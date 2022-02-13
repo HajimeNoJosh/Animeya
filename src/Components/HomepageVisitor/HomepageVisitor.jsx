@@ -3,10 +3,9 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { useHistory, useParams } from 'react-router-dom';
-import { Button } from '../Button/Button';
-import { Input } from '../Input/Input';
+import { Homepage } from '../Homepage/Homepage';
 
-export const RoomVisitor = ({ setRoomId, setRoom, setMyToken, setAnime }) => {
+export const HomepageVisitor = ({ setRoomId, setRoom, setMyToken, setAnime }) => {
   const history = useHistory();
   const [username, setUsername] = useState('');
 
@@ -30,20 +29,15 @@ export const RoomVisitor = ({ setRoomId, setRoom, setMyToken, setAnime }) => {
     });
 
     axios.get(`http://localhost:3000/room/join/${token}`).then((r) => {
-      setAnime(r.data.raw.results);
+      setAnime(r.data.data);
     });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Input value={username} handleChange={handleChange} />
-        <Button />
-      </form>
-    </div>
+    <Homepage handleSubmit={handleSubmit} handleChange={handleChange} value={username} />
   );
 };
 
-RoomVisitor.propTypes = {
+HomepageVisitor.propTypes = {
   setRoomId: PropTypes.func,
 };

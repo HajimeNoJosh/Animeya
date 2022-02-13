@@ -1,0 +1,50 @@
+@import '../utils/variables';
+
+.homepage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  background-color: #FBF7F4;
+
+  &--title {
+    font-size: 8rem;
+    color: #274C77;
+  }
+
+  &--subtitle {
+    font-size: 3rem;
+    color: #e75a7c;
+  }
+
+  &--form {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+
+    &-input-title{
+      font-size: 2.5rem;
+      margin-bottom: .2rem;
+      color: #274C77;
+    }
+    &-input{
+      font-size: 2.5rem;
+      color: #274C77;
+      background-color: #FBF7F4;
+      height: 2.5rem;
+      border-color: #274C77;
+    }
+
+    &-button{
+      font-size: 2.5rem;
+      background-color: #274C77;
+      border: none;
+      border-radius: .3rem;
+      height: 3.5rem;
+      margin-top: 1rem;
+      color: #FBF7F4;
+    }
+  }
+}

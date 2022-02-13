@@ -5,11 +5,11 @@ import useLocalStorage from 'react-use-localstorage';
 
 import './sass/main.scss';
 
-import { Homepage } from './Components/Homepage/Homepage';
+import { HomepageOwner } from './Components/HomepageOwner/HomepageOwner';
 import { Room } from './Components/Room/Room';
 import { RoomMatch } from './Components/RoomMatch/RoomMatch';
-import { RoomVisitor } from './Components/RoomVisitor/RoomVisitor';
 import actionCable from 'actioncable'
+import { HomepageVisitor } from './Components/HomepageVisitor/HomepageVisitor';
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable') // change to whatever port your server uses
 
@@ -27,7 +27,7 @@ const App = () => {
     <HashRouter>
       <Switch>
         <Route exact path="/">
-          <Homepage
+          <HomepageOwner
             setRoomId={setRoomId}
             setRoom={setRoom}
             setMyToken={setMyToken}
@@ -53,7 +53,7 @@ const App = () => {
           />
         </Route>
         <Route path="/join/:token/">
-          <RoomVisitor setRoomId={setRoomId} setRoom={setRoom} setMyToken={setMyToken} setAnime={setAnime} />
+          <HomepageVisitor setRoomId={setRoomId} setRoom={setRoom} setMyToken={setMyToken} setAnime={setAnime} />
         </Route>
 
         <Route render={() => <h1>404: page not found</h1>} />

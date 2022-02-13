@@ -1,46 +1,22 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useHistory } from 'react-router-dom';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 
-export const Homepage = ({ setRoomId, setRoom, setMyToken, setAnime, myId }) => {
-  const history = useHistory();
-  const [username, setUsername] = useState('');
-
-  const handleChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    axios
-      .post(`http://localhost:3000/owner`, { username })
-      .then((res) => {
-        setMyToken(res.data.token)
-        axios
-        .get(`http://localhost:3000/owner/room/${res.data.id}`)
-        .then((r) => {
-          setRoomId(r.data.id);
-          setRoom(r.data);
-          axios.get(`http://localhost:3000/room/join/${r.data.token}`).then((animeR) => {
-            console.log(animeR)
-            setAnime(animeR.data.data);
-            history.push(`/room/${r.data.token}`);
-          });
-        });
-      })
-
-  };
-
+export const Homepage = ({ handleSubmit, username, handleChange }) => {
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Input value={username} handleChange={handleChange} />
-        <Button />
+    <div className='homepage'>
+      <div className='homepage--title'>
+        ANIMEYA
+      </div>
+      <div className='homepage--subtitle'>
+        Find your perfect match!
+      </div>
+      <form className='homepage--form' onSubmit={handleSubmit}>
+        <div className='homepage--form-input-title'>Username</div>
+        <Input className='homepage--form-input' value={username} handleChange={handleChange} />
+        <Button className='homepage--form-button' />
       </form>
     </div>
   );

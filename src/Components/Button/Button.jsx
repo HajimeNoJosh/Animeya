@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const Button = () => <button type="submit">Click me</button>;
+export const Button = ({className}) => <button className={className} type="submit">Sign Up</button>;

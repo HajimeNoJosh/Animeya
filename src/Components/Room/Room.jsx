@@ -47,9 +47,9 @@ export const Room = ({
   }
 
   return anime[num] ? (
-    <div>
+    <div className='animelist'>
       Invite your friends: http://localhost:3001/#/join/{token}
-        <ul className="travelcompany-input" key={num}>
+        <ul className="animelist--input" key={num}>
         {anime[num].title_english ? <li className="input-label">{anime[num].title_english}</li>
          : <li className="input-label">{anime[num].title}</li>}
         <li className="input-label">{anime[num].synopsis}</li>
