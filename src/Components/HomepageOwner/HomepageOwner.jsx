@@ -28,7 +28,7 @@ export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId }
           axios.get(`http://localhost:3000/room/join/${r.data.token}`).then((animeR) => {
             console.log(animeR)
             setAnime(animeR.data.data);
-            history.push(`/room/${r.data.token}`);
+            history.push(`/room/sharelink`);
           });
         });
       })

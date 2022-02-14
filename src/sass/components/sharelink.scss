@@ -1,0 +1,36 @@
+@import '../utils/variables';
+
+.sharelink {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  background-color: #FBF7F4;
+
+  &--button {
+    font-size: 2.5rem;
+    cursor: pointer;
+    border-radius: .3rem;
+    height: 3.5rem;
+    margin-top: 1rem;
+    width: 30rem;
+
+    &-copy {
+        background-color: #FBF7F4;
+        color: #274C77;
+        border: solid#274C77;
+        &:hover {
+            background-color: #274C77;
+            color: #FBF7F4;
+        }
+    }
+
+    &-start {
+        background-color: #274C77;
+        color: #FBF7F4;
+        border: solid#274C77;
+    }
+  }
+}

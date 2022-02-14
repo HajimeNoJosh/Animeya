@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { Button } from '../Button/Button';
+
 export const Room = ({
   num,
   anime,
@@ -48,7 +50,6 @@ export const Room = ({
 
   return anime[num] ? (
     <div className='animelist'>
-      Invite your friends: http://localhost:3001/#/join/{token}
         <ul className="animelist--input" key={num}>
         {anime[num].title_english ? <li className="input-label">{anime[num].title_english}</li>
          : <li className="input-label">{anime[num].title}</li>}
@@ -59,8 +60,8 @@ export const Room = ({
         <li className="input-label">{anime[num].score}</li>
         <img src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english} width="500" height="600"></img>
         </ul>
-      <button onClick={liked}>Like</button>
-      <button onClick={disliked}>Dislike</button>
+      <Button text = 'Like' onClick={liked} />
+      <Button text = 'Dislike' onClick={disliked} />
     </div>
   ) : (
     <div>loading...</div>

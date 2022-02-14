@@ -16,7 +16,7 @@ export const Homepage = ({ handleSubmit, username, handleChange }) => {
       <form className='homepage--form' onSubmit={handleSubmit}>
         <div className='homepage--form-input-title'>Username</div>
         <Input className='homepage--form-input' value={username} handleChange={handleChange} />
-        <Button className='homepage--form-button' />
+        <Button text='Sign Up' className='homepage--form-button' />
       </form>
     </div>
   );

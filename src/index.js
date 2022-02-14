@@ -10,6 +10,7 @@ import { Room } from './Components/Room/Room';
 import { RoomMatch } from './Components/RoomMatch/RoomMatch';
 import actionCable from 'actioncable'
 import { HomepageVisitor } from './Components/HomepageVisitor/HomepageVisitor';
+import { ShareLink } from './Components/ShareLink/ShareLink';
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable') // change to whatever port your server uses
 
@@ -34,6 +35,9 @@ const App = () => {
             setAnime={setAnime}
           />
         </Route>
+        <Route exact path="/room/sharelink/">
+          <ShareLink roomToken={room.token} />
+        </Route>
         <Route exact path="/room/match/">
           <RoomMatch matchedAId={matchedAId} />
         </Route>
@@ -55,7 +59,6 @@ const App = () => {
         <Route path="/join/:token/">
           <HomepageVisitor setRoomId={setRoomId} setRoom={setRoom} setMyToken={setMyToken} setAnime={setAnime} />
         </Route>
-
         <Route render={() => <h1>404: page not found</h1>} />
       </Switch>
     </HashRouter>
