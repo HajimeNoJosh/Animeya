@@ -11,6 +11,7 @@ import { RoomMatch } from './Components/RoomMatch/RoomMatch';
 import actionCable from 'actioncable'
 import { HomepageVisitor } from './Components/HomepageVisitor/HomepageVisitor';
 import { ShareLink } from './Components/ShareLink/ShareLink';
+import { WaitingRoom } from './Components/WaitingRoom/WaitingRoom';
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable') // change to whatever port your server uses
 
@@ -37,6 +38,9 @@ const App = () => {
         </Route>
         <Route exact path="/room/sharelink/">
           <ShareLink roomToken={room.token} />
+        </Route>
+        <Route exact path="/room/matching/">
+          <WaitingRoom cable={CableApp.cable} room={room} />
         </Route>
         <Route exact path="/room/match/">
           <RoomMatch matchedAId={matchedAId} />

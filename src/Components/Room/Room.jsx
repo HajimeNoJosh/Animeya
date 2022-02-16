@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button/Button';
@@ -42,16 +42,32 @@ export const Room = ({
    const anime_id = anime[num].mal_id
     axios
       .post(`http://localhost:3000/right_swipe`, { room_id, user_token, anime_id })
-    setNum(num+1)
-    console.log(anime[num])
+      setNum(num+1)
+      if (anime[num + 1] == null) {
+        const status = "Finished"
+        axios
+          .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+        history.push(`/room/matching`)
+      }
   }
 
   const disliked = () => {
     setNum(num+1)
+    console.log(anime[num])
+    if (anime[num + 1] == null) {
+      const status = "Finished"
+      
+      axios
+        .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+      history.push(`/room/matching`)
+    }
   }
 
   return anime[num] ? (
     <div className="card">
+      <div className='card--title'>
+        ANIMEYA
+      </div>
       <div className="card--content">
         <img className="card--content-image" src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english}></img>
         <ul className="card--content-ul" key={num}>

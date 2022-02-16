@@ -8,6 +8,11 @@
     align-items: center;
     gap: 2rem;
 
+    &--title {
+        font-size: 4rem;
+        color: #274C77;
+    }
+
     &--content {
         border: .4rem solid black;
         width: 32rem;
