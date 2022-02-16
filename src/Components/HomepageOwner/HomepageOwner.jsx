@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Homepage } from '../Homepage/Homepage';
 
-export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId }) => {
+export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId, setUserType }) => {
   const history = useHistory();
   const [username, setUsername] = useState('');
 
@@ -20,6 +20,7 @@ export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId }
       .post(`http://localhost:3000/owner`, { username })
       .then((res) => {
         setMyToken(res.data.token)
+        setUserType('owner');
         axios
         .get(`http://localhost:3000/owner/room/${res.data.id}`)
         .then((r) => {

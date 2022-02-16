@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Button } from '../Button/Button';
 import { useHistory } from 'react-router-dom';
 
-export const WaitingRoom = ({cable, room}) => {
+export const WaitingRoom = ({cable, room, setAllUsersDone, matchedAId}) => {
     const history = useHistory();
 
     useEffect(() => {
@@ -18,11 +18,17 @@ export const WaitingRoom = ({cable, room}) => {
             received(data) {
                 if (data.message === "someone_finished") {
                     const token = room.token
-                    console.log(token)
                     axios
                         .get(`http://localhost:3000/status_of_room/${token}`)
                         .then((res) => {
-                            console.log(res)
+                            if ( res.data === true ) {
+                                setAllUsersDone(true)
+                                if (matchedAId) {
+                                    history.push(`/room/match`);
+                                } else {
+                                    history.push(`/room/failedToMatch`);
+                                }
+                            }
                         })
                 }
             }

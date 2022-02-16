@@ -14,7 +14,9 @@ export const Room = ({
   room_id,
   user_token,
   setMatchedAId,
-  cable
+  cable,
+  userType,
+  allUsersDone
 }) => {
   const { token } = useParams();
   const history = useHistory();
@@ -31,6 +33,8 @@ export const Room = ({
           if (data.message === "matched") {
             setMatchedAId(data.anime_id)
             history.push(`/room/match`);
+          } else if (allUsersDone) {
+            history.push(`/room/failedToMatch`);
           }
         }
       })
@@ -45,20 +49,28 @@ export const Room = ({
       setNum(num+1)
       if (anime[num + 1] == null) {
         const status = "Finished"
-        axios
-          .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+        if (userType === 'owner') {
+          axios
+            .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+        } else if (userType === 'visitor') {
+          axios
+            .patch(`http://localhost:3000/update_visitor_status`, { user_token, status, room_id })
+      }
         history.push(`/room/matching`)
       }
   }
 
   const disliked = () => {
     setNum(num+1)
-    console.log(anime[num])
     if (anime[num + 1] == null) {
       const status = "Finished"
-      
-      axios
-        .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+      if (userType === 'owner') {
+        axios
+          .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+      } else if (userType === 'visitor') {
+        axios
+          .patch(`http://localhost:3000/update_visitor_status`, { user_token, status, room_id })
+    }
       history.push(`/room/matching`)
     }
   }
