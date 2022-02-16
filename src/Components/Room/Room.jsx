@@ -4,6 +4,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button/Button';
+import like from '../../assets/like.png';
+import dislike from '../../assets/dislike.png';
 
 export const Room = ({
   num,
@@ -49,19 +51,27 @@ export const Room = ({
   }
 
   return anime[num] ? (
-    <div className='animelist'>
-        <ul className="animelist--input" key={num}>
-        {anime[num].title_english ? <li className="input-label">{anime[num].title_english}</li>
-         : <li className="input-label">{anime[num].title}</li>}
-        <li className="input-label">{anime[num].synopsis}</li>
-        {anime[num].airing ? <li className="input-label">True</li> 
-        : <li className="input-label">False</li>}
-        <li className="input-label">{anime[num].episodes}</li>
-        <li className="input-label">{anime[num].score}</li>
-        <img src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english} width="500" height="600"></img>
+    <div className="card">
+      <div className="card--content">
+        <img className="card--content-image" src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english}></img>
+        <ul className="card--content-ul" key={num}>
+          {
+          anime[num].title_english ? 
+          <li className="card--content-title">{anime[num].title_english}</li>
+          : <li className="card--content-title">{anime[num].title}</li>
+          }
+          <li className="card--content-rating">Rating: {anime[num].score}</li>
+          {/* <li className="card--content-synopsis">{anime[num].synopsis}</li>
+          {anime[num].airing ? 
+          <li className="card--content-airing">True</li> 
+          : <li className="card--content-airing">False</li>}
+          <li className="card--content-episodes">{anime[num].episodes}</li> */}
         </ul>
-      <Button text = 'Like' onClick={liked} />
-      <Button text = 'Dislike' onClick={disliked} />
+      </div>
+      <div className="card--buttons">
+        <Button className="card--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" />} onClick={disliked} />
+        <Button className="card--buttons-like" text={<img className="card--image-like" src={like} height="70%" width="70%" />} onClick={liked} />
+      </div>
     </div>
   ) : (
     <div>loading...</div>

@@ -1,0 +1,60 @@
+@import '../utils/variables';
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    gap: 2rem;
+
+    &--content {
+        border: .4rem solid black;
+        width: 32rem;
+        height: 54rem;
+
+        &-ul {
+            list-style-type: none;
+            padding: 1rem;
+        }
+
+        &-image {
+            width: 32rem;
+            height: 40.8rem;
+            object-fit: fill;
+        }
+
+        &-title {
+            font-size: 3rem;
+            color: #274C77;
+        }
+        &-rating {
+            font-size: 2rem;
+            color: #274C77;
+        }
+    }
+
+    &--buttons {
+        display: flex;
+        gap: 4rem;
+        position: relative;
+
+        &-like {
+            background-color: red;
+            border: 2px black solid;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 9rem;
+            height: 9rem;
+        }
+        &-dislike {
+            background-color: white;
+            border: 2px black solid;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 9rem;
+            height: 9rem;
+        }
+    }
+}
+
