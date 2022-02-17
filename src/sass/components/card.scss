@@ -1,0 +1,44 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    gap: 2rem;
+
+    &--title {
+        font-size: 4rem;
+        color: #274C77;
+    }
+
+    &--subtitle {
+        font-size: 2rem;
+        color: #e75a7c;
+    }
+
+    &--content {
+        border: .4rem solid black;
+        width: 32rem;
+        height: 54rem;
+
+        &-ul {
+            list-style-type: none;
+            padding: 1rem;
+        }
+
+        &-image {
+            width: 32rem;
+            height: 40.8rem;
+            object-fit: fill;
+        }
+
+        &-title {
+            font-size: 3rem;
+            color: #274C77;
+        }
+        &-rating {
+            font-size: 2rem;
+            color: #274C77;
+        }
+    }
+}

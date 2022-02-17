@@ -4,6 +4,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button/Button';
+import { Card } from '../Card/Card'
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 
@@ -40,8 +41,6 @@ export const Room = ({
       })
   });
 
-  const isEmpty = (obj) => Object.keys(obj).length === 0;
-
   const liked = () => {
    const anime_id = anime[num].mal_id
     axios
@@ -75,30 +74,14 @@ export const Room = ({
     }
   }
 
+  const currentAnime = anime[num];
+
   return anime[num] ? (
-    <div className="card">
-      <div className='card--title'>
-        ANIMEYA
-      </div>
-      <div className="card--content">
-        <img className="card--content-image" src={anime[num].images.jpg.large_image_url} alt={anime[num].title_english}></img>
-        <ul className="card--content-ul" key={num}>
-          {
-          anime[num].title_english ? 
-          <li className="card--content-title">{anime[num].title_english}</li>
-          : <li className="card--content-title">{anime[num].title}</li>
-          }
-          <li className="card--content-rating">Rating: {anime[num].score}</li>
-          {/* <li className="card--content-synopsis">{anime[num].synopsis}</li>
-          {anime[num].airing ? 
-          <li className="card--content-airing">True</li> 
-          : <li className="card--content-airing">False</li>}
-          <li className="card--content-episodes">{anime[num].episodes}</li> */}
-        </ul>
-      </div>
-      <div className="card--buttons">
-        <Button className="card--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" />} onClick={disliked} />
-        <Button className="card--buttons-like" text={<img className="card--image-like" src={like} height="70%" width="70%" />} onClick={liked} />
+    <div className="room">
+      <Card anime={currentAnime} num={num} />
+      <div className="room--buttons">
+        <Button className="room--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" />} onClick={disliked} />
+        <Button className="room--buttons-like" text={<img className="card--image-like" src={like} height="70%" width="70%" />} onClick={liked} />
       </div>
     </div>
   ) : (
