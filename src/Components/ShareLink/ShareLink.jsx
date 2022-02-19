@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Button } from '../Button/Button';
 import { useHistory } from 'react-router-dom';
+
+import { Button } from '../Button/Button';
+import { Title } from '../Title/Title';
 
 export const ShareLink = ({roomToken}) => {
     const history = useHistory();
@@ -23,10 +25,8 @@ export const ShareLink = ({roomToken}) => {
 
     return (
     <div className='sharelink'> 
-        <div className='homepage--title sharelink--title'>
-        ANIMEYA
-        </div>
-        <div className='homepage--subtitle sharelink--subtitle'>
+        <Title text="Animeya" className="sharelink--title" />
+        <div className='sharelink--subtitle'>
             Share Link
         </div>
         <h1> http://localhost:3001/#/join/{roomToken} </h1>

@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 
 export const Card = ({ anime, num, subtitle }) => (
     <div className='card'>
-        <div className='card--title'>
-        ANIMEYA
-        </div>
         <div className='card--subtitle'>
         {subtitle}
         </div>

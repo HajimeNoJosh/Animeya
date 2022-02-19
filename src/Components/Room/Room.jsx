@@ -4,7 +4,8 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button/Button';
-import { Card } from '../Card/Card'
+import { Title } from '../Title/Title';
+import { Card } from '../Card/Card';
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 
@@ -78,6 +79,7 @@ export const Room = ({
 
   return anime[num] ? (
     <div className="room">
+      <Title text="Animeya" className={"room--title"} />
       <Card anime={currentAnime} num={num} />
       <div className="room--buttons">
         <Button className="room--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" />} onClick={disliked} />

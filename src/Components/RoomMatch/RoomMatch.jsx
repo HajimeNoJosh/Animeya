@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import { Card } from '../Card/Card';
+import { Title } from '../Title/Title';
 
 export const RoomMatch = ({matchedAId}) => {
   const [matchedAnime, setMatchedAnime] = useState([]);
@@ -13,7 +14,11 @@ export const RoomMatch = ({matchedAId}) => {
       setMatchedAnime(res.data.data);
     })
   return matchedAnime.title ? (
-    <Card anime={matchedAnime} num={0} subtitle={"Match Found!"} /> ) : ( <div>loading...</div>
+    <div className='matchedAnime'>
+      <Title className='matchedAnime--title' text='Animeya' />
+      <Card anime={matchedAnime} num={0} subtitle={"Match Found!"} /> 
+    </div> )
+  : ( <div>loading...</div>
   )
 };
 

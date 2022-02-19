@@ -6,6 +6,11 @@
     align-items: center;
     gap: 1.5rem;
     
+    &--title {
+        font-size: 4rem;
+        color: #274C77;
+    }
+    
     &--buttons {
         display: flex;
         gap: 4rem;

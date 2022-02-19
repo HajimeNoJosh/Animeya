@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
+import { Title } from '../Title/Title';
 
 export const Homepage = ({ handleSubmit, username, handleChange }) => {
   return (
     <div className='homepage'>
-      <div className='homepage--title'>
-        ANIMEYA
-      </div>
+      <Title text="Animeya" className="homepage--title" />
       <div className='homepage--subtitle'>
         Find your perfect match!
       </div>

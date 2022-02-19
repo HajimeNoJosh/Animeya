@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Button } from '../Button/Button';
 import { useHistory } from 'react-router-dom';
+
+import { Title } from '../Title/Title';
 
 export const WaitingRoom = ({cable, room, setAllUsersDone, matchedAId}) => {
     const history = useHistory();
@@ -36,12 +37,13 @@ export const WaitingRoom = ({cable, room, setAllUsersDone, matchedAId}) => {
       });
 
     return (
-    <div className='sharelink'> 
-        <div className='homepage--title sharelink--title'>
-            ANIMEYA
+    <div className='waitingRoom'>
+        <Title text="Animeya" className='waitingRoom--title' />
+        <div className='waitingRoom--subtitle'>
+            Please Wait
         </div>
-        <div className='homepage--subtitle sharelink--subtitle'>
-            Waiting
+        <div className='waitingRoom--paragraph'>
+            Please wait until all the members of your party have finished liking or disliking their anime.
         </div>
     </div>
     )

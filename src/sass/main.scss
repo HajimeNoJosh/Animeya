@@ -1,12 +1,19 @@
 @import './base/typography';
 @import './base/home';
 @import './base/reset';
+
 @import './components/homepage';
 @import './components/sharelink';
 @import './components/room';
 @import './components/card';
+@import './components/waitingroom';
+@import './components/matchedAnime';
 
 .animelist--input {
     width: 500px;
     text-align: center;
+}
+
+body {
+    background-color: #FBF7F4;
 }
