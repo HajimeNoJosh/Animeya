@@ -49,7 +49,7 @@ const App = () => {
           <RoomMatch matchedAId={matchedAId} />
         </Route>
         <Route exact path="/room/failedToMatch/">
-          <MatchFailed />
+          <MatchFailed room={room} />
         </Route>
         <Route exact path="/room/:token/">
           <Room

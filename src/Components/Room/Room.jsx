@@ -44,8 +44,12 @@ export const Room = ({
 
   const liked = () => {
    const anime_id = anime[num].mal_id
+   const score = anime[num].score
+   const anime_title = anime[num].title_english ? anime[num].title_english : anime[num].title
+   const image = anime[num].images.jpg.large_image_url
+
     axios
-      .post(`http://localhost:3000/right_swipe`, { room_id, user_token, anime_id })
+      .post(`http://localhost:3000/right_swipe`, { room_id, user_token, anime_id, anime_title, score, image})
       setNum(num+1)
       if (anime[num + 1] == null) {
         const status = "Finished"
