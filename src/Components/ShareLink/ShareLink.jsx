@@ -15,7 +15,7 @@ export const ShareLink = ({roomToken}) => {
 
     const copyLink = () => {
         const input = document.createElement('input');
-        input.setAttribute('value', `http://localhost:3001/#/join/${roomToken}`);
+        input.setAttribute('value', `localhost:3001/#/join/${roomToken}`);
         document.body.appendChild(input);
         input.select();
         const result = document.execCommand('copy');
@@ -29,7 +29,7 @@ export const ShareLink = ({roomToken}) => {
         <div className='sharelink--subtitle'>
             Share Link
         </div>
-        <h1> http://localhost:3001/#/join/{roomToken} </h1>
+        <h1> localhost:3001/#/join/{roomToken} </h1>
         <Button text='Copy Link' onClick={copyLink} className='sharelink--button sharelink--button-copy' />
         <Button text='Start' onClick={pushToRoom} className='sharelink--button sharelink--button-start' />
     </div>

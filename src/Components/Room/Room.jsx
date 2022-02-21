@@ -49,16 +49,16 @@ export const Room = ({
    const image = anime[num].images.jpg.large_image_url
 
     axios
-      .post(`http://localhost:3000/right_swipe`, { room_id, user_token, anime_id, anime_title, score, image})
+      .post(`https://animeya.herokuapp.com/right_swipe`, { room_id, user_token, anime_id, anime_title, score, image})
       setNum(num+1)
       if (anime[num + 1] == null) {
         const status = "Finished"
         if (userType === 'owner') {
           axios
-            .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+            .patch(`https://animeya.herokuapp.com/update_owner_status`, { user_token, status, room_id })
         } else if (userType === 'visitor') {
           axios
-            .patch(`http://localhost:3000/update_visitor_status`, { user_token, status, room_id })
+            .patch(`https://animeya.herokuapp.com/update_visitor_status`, { user_token, status, room_id })
       }
         history.push(`/room/matching`)
       }
@@ -70,10 +70,10 @@ export const Room = ({
       const status = "Finished"
       if (userType === 'owner') {
         axios
-          .patch(`http://localhost:3000/update_owner_status`, { user_token, status, room_id })
+          .patch(`https://animeya.herokuapp.com/update_owner_status`, { user_token, status, room_id })
       } else if (userType === 'visitor') {
         axios
-          .patch(`http://localhost:3000/update_visitor_status`, { user_token, status, room_id })
+          .patch(`https://animeya.herokuapp.com/update_visitor_status`, { user_token, status, room_id })
     }
       history.push(`/room/matching`)
     }

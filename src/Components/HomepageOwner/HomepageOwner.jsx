@@ -17,16 +17,16 @@ export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId, 
     event.preventDefault();
 
     axios
-      .post(`http://localhost:3000/owner`, { username })
+      .post(`https://animeya.herokuapp.com/owner`, { username })
       .then((res) => {
         setMyToken(res.data.token)
         setUserType('owner');
         axios
-        .get(`http://localhost:3000/owner/room/${res.data.id}`)
+        .get(`https://animeya.herokuapp.com/owner/room/${res.data.id}`)
         .then((r) => {
           setRoomId(r.data.id);
           setRoom(r.data);
-          axios.get(`http://localhost:3000/room/join/${r.data.token}`).then((animeR) => {
+          axios.get(`https://animeya.herokuapp.com/room/join/${r.data.token}`).then((animeR) => {
             console.log(animeR)
             setAnime(animeR.data.data);
             history.push(`/room/sharelink`);

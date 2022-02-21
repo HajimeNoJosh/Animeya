@@ -18,18 +18,18 @@ export const HomepageVisitor = ({ setRoomId, setRoom, setMyToken, setAnime, setU
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:3000/visitor`, { username, token })
+      .post(`https://animeya.herokuapp.com/visitor`, { username, token })
       .then((r) => {
         setMyToken(r.data.token)
         setUserType('visitor');
       })
-    axios.get(`http://localhost:3000/room/${token}`).then((r) => {
+    axios.get(`https://animeya.herokuapp.com/room/${token}`).then((r) => {
       setRoom(r.data);
       setRoomId(r.data.id);
       history.push(`/room/${token}`);
     });
 
-    axios.get(`http://localhost:3000/room/join/${token}`).then((r) => {
+    axios.get(`https://animeya.herokuapp.com/room/join/${token}`).then((r) => {
       setAnime(r.data.data);
     });
   };

@@ -13,7 +13,7 @@ export const MatchFailed = ({ room }) => {
     const getRightSwipes = () => {
       const room_id = room.id
       axios
-        .get(`http://localhost:3000/get_all_right_swipes/${room_id}`)
+        .get(`https://animeya.herokuapp.com/get_all_right_swipes/${room_id}`)
         .then((res) => {
           if (rightSwipes.length === 0) {
             if (res) {

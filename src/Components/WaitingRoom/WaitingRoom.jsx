@@ -20,7 +20,7 @@ export const WaitingRoom = ({cable, room, setAllUsersDone, matchedAId}) => {
                 if (data.message === "someone_finished") {
                     const token = room.token
                     axios
-                        .get(`http://localhost:3000/status_of_room/${token}`)
+                        .get(`https://animeya.herokuapp.com/status_of_room/${token}`)
                         .then((res) => {
                             if ( res.data === true ) {
                                 setAllUsersDone(true)

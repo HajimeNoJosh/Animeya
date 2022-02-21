@@ -14,7 +14,7 @@ import { ShareLink } from './Components/ShareLink/ShareLink';
 import { WaitingRoom } from './Components/WaitingRoom/WaitingRoom';
 import { MatchFailed } from './Components/MatchFailed/MatchFailed';
 const CableApp = {}
-CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable') // change to whatever port your server uses
+CableApp.cable = actionCable.createConsumer('ws://animeya.herokuapp.com/cable') // change to whatever port your server uses
 
 const App = () => {
   const [userType, setUserType] = useState('');
