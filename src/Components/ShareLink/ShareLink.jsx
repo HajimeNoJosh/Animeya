@@ -29,7 +29,7 @@ export const ShareLink = ({roomToken}) => {
         <div className='sharelink--subtitle'>
             Share Link
         </div>
-        <h1> localhost:3001/#/join/{roomToken} </h1>
+        <h1> https://main.d240vcn742evyv.amplifyapp.com/#/join/{roomToken} </h1>
         <Button text='Copy Link' onClick={copyLink} className='sharelink--button sharelink--button-copy' />
         <Button text='Start' onClick={pushToRoom} className='sharelink--button sharelink--button-start' />
     </div>
