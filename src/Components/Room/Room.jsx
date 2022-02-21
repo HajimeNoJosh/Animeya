@@ -86,8 +86,8 @@ export const Room = ({
       <Title text="Animeya" className={"room--title"} />
       <Card anime={currentAnime} num={num} />
       <div className="room--buttons">
-        <Button className="room--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" />} onClick={disliked} />
-        <Button className="room--buttons-like" text={<img className="card--image-like" src={like} height="70%" width="70%" />} onClick={liked} />
+        <Button className="room--buttons-dislike" text={<img className="card--image-dislike" src={dislike} height="50%" width="50%" alt="button-dislike"  />} onClick={disliked} />
+        <Button className="room--buttons-like" text={<img className="card--image-like" src={like} height="70%" width="70%" alt="button-like" />} onClick={liked} />
       </div>
     </div>
   ) : (

@@ -36,7 +36,7 @@ export const HomepageOwner = ({ setRoomId, setRoom, setMyToken, setAnime, myId, 
   };
 
   return (
-    <Homepage handleSubmit={handleSubmit} handleChange={handleChange} value={username} />
+    <Homepage handleSubmit={handleSubmit} handleChange={handleChange} value={username} buttonText={"Create Room"} />
   );
 };
 

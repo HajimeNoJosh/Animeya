@@ -5,7 +5,7 @@ import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Title } from '../Title/Title';
 
-export const Homepage = ({ handleSubmit, username, handleChange }) => {
+export const Homepage = ({ handleSubmit, username, handleChange, buttonText }) => {
   return (
     <div className='homepage'>
       <Title text="Animeya" className="homepage--title" />
@@ -15,7 +15,7 @@ export const Homepage = ({ handleSubmit, username, handleChange }) => {
       <form className='homepage--form' onSubmit={handleSubmit}>
         <div className='homepage--form-input-title'>Username</div>
         <Input className='homepage--form-input' value={username} handleChange={handleChange} />
-        <Button text='Sign Up' className='homepage--form-button' />
+        <Button text={buttonText} className='homepage--form-button' />
       </form>
     </div>
   );

@@ -35,7 +35,7 @@ export const HomepageVisitor = ({ setRoomId, setRoom, setMyToken, setAnime, setU
   };
 
   return (
-    <Homepage handleSubmit={handleSubmit} handleChange={handleChange} value={username} />
+    <Homepage handleSubmit={handleSubmit} handleChange={handleChange} value={username} buttonText={"Join Room"} />
   );
 };
 
