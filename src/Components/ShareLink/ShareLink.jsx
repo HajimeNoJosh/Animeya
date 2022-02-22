@@ -8,6 +8,7 @@ import { Title } from '../Title/Title';
 
 export const ShareLink = ({roomToken}) => {
     const history = useHistory();
+    const base_url = window.location.origin;
 
     const pushToRoom = () => {
         history.push(`/room/${roomToken}`);
@@ -15,7 +16,7 @@ export const ShareLink = ({roomToken}) => {
 
     const copyLink = () => {
         const input = document.createElement('input');
-        input.setAttribute('value', `localhost:3001/#/join/${roomToken}`);
+        input.setAttribute('value', `${base_url}/#/join/${roomToken}`);
         document.body.appendChild(input);
         input.select();
         const result = document.execCommand('copy');
@@ -29,7 +30,7 @@ export const ShareLink = ({roomToken}) => {
         <div className='sharelink--subtitle'>
             Share Link
         </div>
-        <h1> https://main.d240vcn742evyv.amplifyapp.com/#/join/{roomToken} </h1>
+        <h1> {base_url}/#/join/{roomToken} </h1>
         <Button text='Copy Link' onClick={copyLink} className='sharelink--button sharelink--button-copy' />
         <Button text='Start' onClick={pushToRoom} className='sharelink--button sharelink--button-start' />
     </div>
