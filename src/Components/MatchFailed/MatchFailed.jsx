@@ -8,10 +8,10 @@ import { Card } from '../Card/Card';
 
 export const MatchFailed = ({ room }) => {
   const [rightSwipes, setRightSwipes] = useState([])
-  // const [mostLikedAnime, setMostLikedAnime] = useState([])
+  const room_id = room.id
+
   useEffect(() => {
     const getRightSwipes = () => {
-      const room_id = room.id
       axios
         .get(`https://animeya.herokuapp.com/get_all_right_swipes/${room_id}`)
         .then((res) => {

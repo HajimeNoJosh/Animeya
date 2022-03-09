@@ -1,40 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 import { Title } from '../Title/Title';
 
-export const WaitingRoom = ({cable, room, setAllUsersDone, matchedAId}) => {
-    const history = useHistory();
-
-    useEffect(() => {
-        cable.subscriptions.create({
-        channel: 'RoomsChannel',
-        room_id: room.id, },
-        {
-            connected() {
-              console.log('connected')
-            },
-            received(data) {
-                if (data.message === "someone_finished") {
-                    const token = room.token
-                    axios
-                        .get(`https://animeya.herokuapp.com/status_of_room/${token}`)
-                        .then((res) => {
-                            if ( res.data === true ) {
-                                setAllUsersDone(true)
-                                if (matchedAId) {
-                                    history.push(`/room/match`);
-                                } else {
-                                    history.push(`/room/failedToMatch`);
-                                }
-                            }
-                        })
-                }
-            }
-        })
-      });
+export const WaitingRoom = ({cable, room, setStateObj, matchedAId}) => {
 
     return (
     <div className='waitingRoom'>

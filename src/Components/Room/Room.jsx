@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import { Button } from '../Button/Button';
 import { Title } from '../Title/Title';
@@ -10,37 +9,17 @@ import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 
 export const Room = ({
+  room,
   num,
   anime,
-  setNum,
-  room_id,
   user_token,
-  setMatchedAId,
-  cable,
   userType,
-  allUsersDone
+  setStateObj
 }) => {
-  const { token } = useParams();
+  // const { token } = useParams();
   const history = useHistory();
-
-  useEffect(() => {
-    cable.subscriptions.create({
-      channel: 'RoomsChannel',
-      room_id: room_id, },
-      {
-        connected() {
-          console.log('connected')
-        },
-        received(data) {
-          if (data.message === "matched") {
-            setMatchedAId(data.anime_id)
-            history.push(`/room/match`);
-          } else if (allUsersDone) {
-            history.push(`/room/failedToMatch`);
-          }
-        }
-      })
-  });
+  const room_id = room.id
+  const currentAnime = anime[num];
 
   const liked = () => {
    const anime_id = anime[num].mal_id
@@ -50,7 +29,7 @@ export const Room = ({
 
     axios
       .post(`https://animeya.herokuapp.com/right_swipe`, { room_id, user_token, anime_id, anime_title, score, image})
-      setNum(num+1)
+      setStateObj(prevState => ({...prevState, num: num += 1}))
       if (anime[num + 1] == null) {
         const status = "Finished"
         if (userType === 'owner') {
@@ -65,7 +44,7 @@ export const Room = ({
   }
 
   const disliked = () => {
-    setNum(num+1)
+    setStateObj(prevState => ({...prevState, num: num += 1}))
     if (anime[num + 1] == null) {
       const status = "Finished"
       if (userType === 'owner') {
@@ -78,8 +57,6 @@ export const Room = ({
       history.push(`/room/matching`)
     }
   }
-
-  const currentAnime = anime[num];
 
   return anime[num] ? (
     <div className="room">
@@ -94,15 +71,3 @@ export const Room = ({
     <div>loading...</div>
   );
 }
-
-Room.propTypes = {
-  owner: PropTypes.object,
-  visitors: PropTypes.object,
-  anime: PropTypes.array,
-  setOwner: PropTypes.func,
-  setVisitors: PropTypes.func,
-  setRoom: PropTypes.func,
-  room: PropTypes.object,
-  roomId: PropTypes.number,
-  myId: PropTypes.number,
-};
